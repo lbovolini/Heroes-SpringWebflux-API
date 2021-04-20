@@ -9,64 +9,60 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-
 @NoArgsConstructor
-@DynamoDBTable(tableName ="Heroes_Api_Table")
-
-
+@DynamoDBTable(tableName = "Heroes_Api_Table")
 public class Heroes {
-  public String getId() {
-    return id;
-  }
+    @Id
+    @DynamoDBHashKey(attributeName = "id")
+    private String id;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+    @DynamoDBAttribute(attributeName = "name")
+    private String name;
 
-  public String getName() {
-    return name;
-  }
+    @DynamoDBAttribute(attributeName = "universe")
+    private String universe;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    @DynamoDBAttribute(attributeName = "films")
+    private int films;
 
-  public String getUniverse() {
-    return universe;
-  }
+    public Heroes(String id, String name, String universe, int films) {
+        this.id = id;
+        this.name = name;
+        this.universe = universe;
+        this.films = films;
+    }
 
-  public void setUniverse(String universe) {
-    this.universe = universe;
-  }
+    public String getId() {
+        return id;
+    }
 
-  public int getFilms() {
-    return films;
-  }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-  public void setFilms(int films) {
-    this.films = films;
-  }
+    public String getName() {
+        return name;
+    }
 
-  @Id
-  @DynamoDBHashKey (attributeName = "id")
-  private String id;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  @DynamoDBAttribute (attributeName = "name")
-  private String name;
+    public String getUniverse() {
+        return universe;
+    }
 
-  @DynamoDBAttribute (attributeName = "universe")
-  private String universe;
+    public void setUniverse(String universe) {
+        this.universe = universe;
+    }
 
-  @DynamoDBAttribute (attributeName = "films")
-  private int films;
+    public int getFilms() {
+        return films;
+    }
 
-
-  public Heroes(String id, String name, String universe, int films) {
-    this.id = id;
-    this.name = name;
-    this.universe = universe;
-    this.films = films;
-  }
+    public void setFilms(int films) {
+        this.films = films;
+    }
 
 }
 
